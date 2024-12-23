@@ -1,43 +1,29 @@
 import Table from "react-bootstrap/Table";
 
-function RecommendationTable() {
+function RecommendationTable({ recommendations }) {
+  console.table(recommendations);
+
   return (
     <>
       <h2>Food recommendations:</h2>
       <Table responsive striped bordered hover>
         <thead>
           <tr>
-            {/* <th>#</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Comments</th>
-          <th>Rating</th>
-          <th>Lat</th>
-          <th>Long</th> */}
-            <th>#</th>
             <th>Name</th>
-            {/* <th>Lat</th>
-            <th>Long</th> */}
-            <th>Comments</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Sprezzatura</td>
-            {/* <td>53.33419343519067</td>
-            <td>-6.266086820249075</td> */}
-            <td>Lovely Italian but really reasonable.</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>777</td>
-            {/* <td>53.34321621616519</td>
-            <td>-6.264508052173804</td> */}
-            <td>Really good for Mexican and Margaritas.</td>
-          </tr>
+          {recommendations.map((r) => (
+            <tr key={r.id}>
+              <td>{r.name}</td>
+              <td>{r.latitude}</td>
+              <td>{r.longitude}</td>
+              <td>{r.description}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </>
