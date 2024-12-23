@@ -4,10 +4,6 @@ import { Icon } from "leaflet";
 // import * as parkData from "../data"; // not finished typing the address as I don't think it's in this project?
 
 const Map = ({ latitude, longitude }) => {
-  // console.log(latitude);
-  // console.log(longitude);
-
-  console.table({ fakeobject: latitude, fakeobject2: longitude });
   if (latitude && longitude) {
     return (
       <div className='map'>
