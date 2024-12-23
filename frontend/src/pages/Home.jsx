@@ -1,5 +1,3 @@
-import City from "./City";
-
 function Home() {
   let recommendations = [
     {
@@ -71,7 +69,6 @@ function Home() {
           </div>
         </div>
       </div>
-      {console.log(cities[0])}
     </header>
   );
 }
