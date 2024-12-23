@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 
-public class Recommendation
+namespace RecommendationList.Models
 {
-	public int Id { get; set; }
-	public string? Name { get; set; }
-	public string? Description { get; set; }
-	public string Latitude { get; set; }
-	public string Longitude { get; set; }
+    public class Recommendation
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Type { get; set; }
+        public string? Description { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+    }
 }
