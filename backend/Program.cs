@@ -65,9 +65,10 @@ app.MapGet(
 app.MapGet(
     "/city/{cityId}/recommendations",
     async (int cityId, RecommendationDb db) =>
-        await db.Recommendations.FindAsync(cityId) is Recommendation recommendation
-            ? Results.Ok(recommendation)
-            : Results.NotFound()
+    {
+        var recommendations = await db.Recommendations.Where(r => r.CityId == cityId).ToListAsync();
+        return recommendations.Any() ? Results.Ok(recommendations) : Results.NotFound();
+    }
 );
 
 app.MapPost(
