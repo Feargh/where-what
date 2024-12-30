@@ -1,6 +1,15 @@
 import Table from "react-bootstrap/Table";
 
 function RecommendationTable({ recommendations }) {
+  const normalisedRecommendations = Array.isArray(recommendations)
+    ? recommendations
+    : [recommendations];
+  console.log("Normalised Recommendations:", normalisedRecommendations);
+
+  if (!normalisedRecommendations || normalisedRecommendations.length === 0) {
+    return <p>No recommendations found.</p>;
+  }
+
   return (
     <>
       <h2>Food recommendations:</h2>
@@ -14,7 +23,7 @@ function RecommendationTable({ recommendations }) {
           </tr>
         </thead>
         <tbody>
-          {recommendations.map((r) => (
+          {normalisedRecommendations.map((r) => (
             <tr key={r.id}>
               <td>{r.name}</td>
               <td>{r.latitude}</td>
@@ -30,7 +39,7 @@ function RecommendationTable({ recommendations }) {
 
 export default RecommendationTable;
 
-// 777	53.34321621616519, -6.264508052173804	Really good for Mexican and Margaritas.
+// 777 restaurant	53.34321621616519, -6.264508052173804	Really good for Mexican and Margaritas.
 // Hang Dai 	53.33520900875492, -6.2650310403776155	Unreal Chinese food
 // Delahunt	53.33428373979245, -6.265105295691872	if they want something fancier.
 // Uno Mas	53.34105720540218, -6.265418525973856	if they want something fancier.
