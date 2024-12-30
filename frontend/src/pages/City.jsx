@@ -4,20 +4,14 @@ import { useState, useEffect } from "react";
 
 import PropTypes from "prop-types";
 
-function City({ city_name, latitude, longitude }) {
+function City({ city_name, city_id, latitude, longitude }) {
   const [recommendations, setRecommendations] = useState([]);
 
   // API call to get recommendations
   useEffect(() => {
-    fetch("http://localhost:5000/recommendation")
+    fetch(`http://localhost:5000/city/${city_id}/recommendations`)
       .then((response) => response.json())
       .then((data) => setRecommendations(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/city/1/recommendations")
-      .then((response) => response.json())
-      .then((data) => console.table(data));
   }, []);
 
   return (
