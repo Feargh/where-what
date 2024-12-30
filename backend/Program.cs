@@ -46,6 +46,21 @@ app.MapGet(
     async (RecommendationDb db) => await db.Cities.ToListAsync()
 );
 
+app.MapDelete(
+    "/city/{id}",
+    async (int id, RecommendationDb db) =>
+    {
+        if (await db.Cities.FindAsync(id) is City city)
+        {
+            db.Cities.Remove(city);
+            await db.SaveChangesAsync();
+            return Results.NoContent();
+        }
+
+        return Results.NotFound();
+    }
+);
+
 app.MapGet(
     "/recommendation/{id}",
     async (int id, RecommendationDb db) =>
