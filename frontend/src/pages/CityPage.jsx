@@ -17,7 +17,17 @@ function CityPage() {
       longitude={cityData.longitude}
     />
   ) : (
-    <h1>Oh no</h1>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>City Not Found</h1>
+      <p>
+        Oops! We couldn't find the city you were looking for. It might not be in
+        our database yet.
+      </p>
+      <p>
+        Please check the city name and try again, or return to the
+        <a href='/'>homepage</a>.
+      </p>
+    </div>
   );
 }
 
