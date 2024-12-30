@@ -17,7 +17,11 @@ function City({ city_name, city_id, latitude, longitude }) {
   return (
     <>
       <h1>{city_name ? city_name : "City name"}</h1>
-      <Map latitude={latitude} longitude={longitude} />
+      <Map
+        latitude={latitude}
+        longitude={longitude}
+        recommendations={recommendations}
+      />
       <RecommendationTable recommendations={recommendations} />
     </>
   );
