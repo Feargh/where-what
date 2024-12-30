@@ -214,4 +214,4 @@ AppPackages/
 
 # databases
 
-*.db
+*.db*
