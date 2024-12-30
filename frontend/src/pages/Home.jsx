@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { CityContext } from "../CityContext";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const [databaseCities, setDatabaseCities] = useState([]);
+  const { cities, setCities } = useContext(CityContext);
 
   useEffect(() => {
     fetch("http://localhost:5000/city")
       .then((response) => response.json())
-      .then((data) => setDatabaseCities(data));
+      .then((data) => setCities(data));
   }, []);
 
-  let cities = new Set([]);
+  let citiesSet = new Set([]);
 
   function uniqueCities(array, set) {
     array.forEach((element) => set.add(element.name));
   }
 
-  uniqueCities(databaseCities, cities);
+  uniqueCities(cities, citiesSet);
 
   return (
     <header className='p-5' style={{ paddingLeft: 0 }}>
@@ -37,15 +39,14 @@ function Home() {
                 Recommendations for cities around the world
               </h4>
               <div className='mx-auto'>
-                {Array.from(cities).map((c, index) => (
-                  <a
-                    key={index}
+                {Array.from(citiesSet).map((cityName) => (
+                  <Link
+                    key={cityName}
                     className='btn btn-outline-light btn-lg mx-2 my-2'
-                    href={c}
-                    role='button'
+                    to={`/city/${cityName}`}
                   >
-                    {c}
-                  </a>
+                    {cityName}
+                  </Link>
                 ))}
               </div>
             </div>
