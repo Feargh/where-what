@@ -1,38 +1,21 @@
+import { useEffect, useState } from "react";
+
 function Home() {
-  let recommendations = [
-    {
-      city_name: "Dublin",
-      recommendation_name: "The Stag's Head",
-      type: "Pub",
-      comment: "Victorian red brick pub with great atmosphere",
-      latitude: 53.343835,
-      longitude: -6.263736,
-    },
-    {
-      city_name: "London",
-      recommendation_name: "Shack-Fuyu Soho",
-      type: "Japanese restaurant",
-      comment: "Delicious Japanese food, don't miss the matcha french toast",
-      latitude: 51.513666,
-      longitude: -0.130055,
-    },
-    {
-      city_name: "Lisbon",
-      recommendation_name: "Pastéis de Belém",
-      type: "Pastry shop",
-      comment: "Best Pastel de Nata",
-      latitude: 38.69736,
-      longitude: -9.203333,
-    },
-  ];
+  const [databaseCities, setDatabaseCities] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/city")
+      .then((response) => response.json())
+      .then((data) => setDatabaseCities(data));
+  }, []);
 
   let cities = new Set([]);
 
   function uniqueCities(array, set) {
-    array.forEach((element) => set.add(element.city_name));
+    array.forEach((element) => set.add(element.name));
   }
 
-  uniqueCities(recommendations, cities);
+  uniqueCities(databaseCities, cities);
 
   return (
     <header className='p-5' style={{ paddingLeft: 0 }}>
