@@ -1,8 +1,6 @@
 import Table from "react-bootstrap/Table";
 
 function RecommendationTable({ recommendations }) {
-  console.table(recommendations);
-
   return (
     <>
       <h2>Food recommendations:</h2>
