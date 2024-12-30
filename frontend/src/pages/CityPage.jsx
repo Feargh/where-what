@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CityContext } from "../CityContext";
-import City from "./City";
+import City from "../components/City";
 
 function CityPage() {
   const { cities } = useContext(CityContext);
