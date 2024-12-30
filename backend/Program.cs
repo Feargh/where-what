@@ -62,6 +62,14 @@ app.MapGet(
             : Results.NotFound()
 );
 
+app.MapGet(
+    "/city/{cityId}/recommendations",
+    async (int cityId, RecommendationDb db) =>
+        await db.Recommendations.FindAsync(cityId) is Recommendation recommendation
+            ? Results.Ok(recommendation)
+            : Results.NotFound()
+);
+
 app.MapPost(
     "/recommendation",
     async (Recommendation recommendation, RecommendationDb db) =>
