@@ -11,16 +11,24 @@ cities tips on what to do and see and where to eat. The Frontend data is
 generated dynamicaly from the information in the backend database, so it can be
 updated easily.
 
-The project is seperated into a frontend and backend folders on a github repo.
-For the frontend I used react, vite, javascript, bootstrap and openleaf maps.
-For react I set up the project using vite and the code is seperated into
-components and pages. For the backend it is made with C# and .NET. I used Entity
-Framework (EF) Core to set up the database using seed data and migrations. I set
-up the database with two tables, one for the cities and another for the
-recommendations. The recommendations include a foreign key to link them to which
-city they are in. I created an API in the style of mimial API in the program.cs
-file. I added swagger to document the API in the backend and for testing but
-also used postman to test this also.
+The project is seperated into a frontend and backend folders in the github repo.
+
+For the frontend I used react, vite, javascript, bootstrap and openleaf maps. I
+set up the project using vite for react and javascript. The code is seperated
+into components and pages. The frontend has a homepage, about page, suggest a
+city page and then the dynamicly created city pages. The city pages are created
+using an API call to the backend and then this is stored in context. The context
+allows the links to pull up the correct recommendations and maps for the city
+pages using the cityId to get the correct info to populate the map and the
+recommendations table.
+
+For the backend it is made with C# and .NET. I used Entity Framework (EF) Core
+to set up the database using seed data and migrations. I set up the database
+with two tables, one for the cities and another for the recommendations. The
+recommendations include a foreign key to link them to which city they are in. I
+created an API in the style of mimial API in the program.cs file. I added
+swagger to document the API in the backend and for testing but also used postman
+to test this also.
 
 I used C# and javascript as these are the languages I that I use in work. I used
 two different Integrated Development Environments (IDE)s. Visual Studio 2022
@@ -40,6 +48,19 @@ was also a learning point for me. For the frontend using react to access the API
 with useEffect() took some work and research to learn how to do correctly. I
 also used bootstrap components on the frontend and I found this very user
 friendly and useful too.
+
+## Future potential
+
+If I was to work on this project further I would upgrade the design to look more
+sleak. I would like to work on the suggest a city form and link this to the
+backend rather than just console logging it as it currently does. I would like
+to work on the routing and ensure this is consistent. I would like to add user
+log in functionality. I would like to deploy the app so it could be accessed and
+used from the web by users. I would like to convert the frontend to typescript
+to practice converting a project to typescript and to increase my proficiency
+with typescript.
+
+---
 
 ## Technologies used:
 
@@ -64,11 +85,12 @@ friendly and useful too.
 - Frontend folder
 - Backend folder
 - Configuration files
-
   - .gitignore
   - .prettier
 
-  ### How to run
+---
+
+### How to run
 
 - Clone repo
 - cd into frontend folder and run `npm install`
