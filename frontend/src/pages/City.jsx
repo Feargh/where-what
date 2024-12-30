@@ -14,6 +14,12 @@ function City({ city_name, latitude, longitude }) {
       .then((data) => setRecommendations(data));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:5000/city/1/recommendations")
+      .then((response) => response.json())
+      .then((data) => console.table(data));
+  }, []);
+
   return (
     <>
       <h1>{city_name ? city_name : "City name"}</h1>
