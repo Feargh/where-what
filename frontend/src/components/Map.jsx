@@ -3,7 +3,9 @@ import "../../src/index.css";
 import { Icon } from "leaflet";
 // import * as parkData from "../data"; // not finished typing the address as I don't think it's in this project?
 
-const Map = ({ latitude, longitude }) => {
+const Map = ({ latitude, longitude, recommendations }) => {
+  console.table(recommendations);
+
   if (latitude && longitude) {
     return (
       <div className='map'>
@@ -23,21 +25,13 @@ const Map = ({ latitude, longitude }) => {
               url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            {/* <Marker position={[latitude, longitude]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker> */}
-            <Marker position={[53.33419343519067, -6.266086820249075]}>
-              <Popup>
-                Sprezzatura <br /> Lovely Italian but really reasonable.
-              </Popup>
-            </Marker>
-            <Marker position={[53.34321621616519, -6.264508052173804]}>
-              <Popup>
-                777 <br /> Really good for Mexican and Margaritas.
-              </Popup>
-            </Marker>
+            {Array.from(recommendations).map((rec) => (
+              <Marker position={[rec.latitude, rec.longitude]} key={rec.id}>
+                <Popup>
+                  {rec.name} <br /> {rec.description}
+                </Popup>
+              </Marker>
+            ))}
           </MapContainer>
         </div>
       </div>
